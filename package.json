@@ -1,0 +1,26 @@
+{
+  "name": "jaysoni-india.github.io",
+  "version": "1.0.0",
+  "description": "Personal Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress",
+    "build": "cp src dist",
+    "run": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh:git@github.com:jaysoni-india/jaysoni-india.github.io.git"
+  },
+  "keywords": [
+    "personal",
+    "portfolio",
+    "website"
+  ],
+  "author": "Jay Soni",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaysoni-india/jaysoni-india.github.io/issues"
+  },
+  "homepage": "https://github.com/jaysoni-india/jaysoni-india.github.io#readme"
+}
