@@ -21,9 +21,10 @@ jobs:
           command: |
             git config --global user.email "circleci@example.com"
             git config --global user.name "CircleCI"
+            ls
             git checkout gh-pages
+            ls
             git rm -rf .
-            cp -r dist/* .
             git commit -m "Clean gh-pages branch"
             git push origin gh-pages
 
