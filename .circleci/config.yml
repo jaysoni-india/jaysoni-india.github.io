@@ -4,7 +4,6 @@ jobs:
   build:
     docker:
       - image: node:lts-slim
-    #      - image: node:lts-bullseye
 
     steps:
       - checkout
@@ -13,7 +12,7 @@ jobs:
 
   deploy:
     docker:
-      - image: node:lts-slim
+      - image: node:lts-bullseye
     steps:
       - checkout
       - run:
