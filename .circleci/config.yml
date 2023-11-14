@@ -3,8 +3,8 @@ version: 2.1
 jobs:
   build:
     docker:
-#      - image: node:lts-slim
-      - image: node:lts-bullseye
+      - image: node:lts-slim
+    #      - image: node:lts-bullseye
 
     steps:
       - checkout
@@ -13,7 +13,7 @@ jobs:
 
   deploy:
     docker:
-      - image: node:lts-bullseye
+      - image: node:lts-slim
     steps:
       - checkout
       - run:
@@ -23,8 +23,8 @@ jobs:
             git config --global user.name "CircleCI"
             git checkout gh-pages
             git rm -rf .
-            cp -r dist/* .
-            rm dist -r
+            if [ -d "docs" ]; then rm -r docs; fi
+            mv dist docs
             git commit --allow-empty -m "Clean gh-pages branch"
             git push -f origin gh-pages
 
