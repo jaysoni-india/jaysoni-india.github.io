@@ -1,0 +1,43 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: node:lts-bullseye
+
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+
+  deploy:
+    docker:
+      - image: node:lts-bullseye
+    steps:
+      - checkout
+      - run:
+          name: Deploy to GitHub Pages
+          command: |
+            git config --global user.email "circleci@example.com"
+            git config --global user.name "CircleCI"
+            ls
+            git checkout gh-pages
+            if [ -d "docs" ]; then rm -r docs; fi
+            ls
+            if [ -d "dist" ]; then mv dist docs; fi 
+            git add .
+            git commit --allow-empty -m "Clean gh-pages branch"
+            git push -f origin gh-pages
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+#          filters:
+#            branches:
+#              only:
+#                - main
