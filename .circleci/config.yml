@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: node:lts-slim
+      - image: node:lts-bullseye
 
     steps:
       - checkout
@@ -20,9 +20,12 @@ jobs:
           command: |
             git config --global user.email "circleci@example.com"
             git config --global user.name "CircleCI"
+            ls
             git checkout gh-pages
             if [ -d "docs" ]; then rm -r docs; fi
-            mv dist docs
+            ls
+            if [ -d "dist" ]; then mv dist docs; fi 
+            git add .
             git commit --allow-empty -m "Clean gh-pages branch"
             git push -f origin gh-pages
 
